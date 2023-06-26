@@ -47,3 +47,9 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Libre Office detritus
+\.~lock.*
+
+# Docker build logs
+build.log
