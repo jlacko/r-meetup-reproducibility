@@ -9,17 +9,12 @@ src <- readr::read_tsv("./strnadi/SIT.txt") %>%
   cbind(`2022` = 0) %>% 
   pivot_longer(cols = starts_with("2"), names_to = "year", values_to = "value") %>% 
   mutate(year = ifelse(year == "20112", "2012", year)) %>% # sauber machen! vycistit...
-  
-  #   filter(Syllable %in% c("A10", "E92")) %>% # tohle je dobre k ladeni
-  
   mutate(month = ym(paste0(year, "-07"))-years(1))
 
 # parametry: vektory musi mit prvku jako skupin, barva jako kategorie slabik
 vektor_pruhlednosti <- c(0, 1/5, 1/5, 2/3, 2/3, 1)
 vektor_tloustek <- c(0, 1, 1, 2, 3, 4)
 paleta_barev <- wesanderson::wes_palette("Darjeeling1", length(unique(src$category)), type = "continuous")
-#paleta_barev <- palette(brewer.pal(n = length(unique(src$Category)), name = "Dark2")) #too fews colours
-
 
 obrazek <- ggplot(data = src, aes(x = Syllable, y = month, color = category, size = factor(value, levels = 0:5), group = Syllable)) +
   geom_line() +
