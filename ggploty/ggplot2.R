@@ -7,10 +7,10 @@ ggplot(data = chart_src, aes(x = last_updated,
                              y = 1,
                              color = pkg,
                              label = version)) +
-  geom_jitter(position = position_jitter(seed = 24),
+  geom_jitter(position = position_jitter(seed = 26),
               color = "red",
               pch = 4) +
-  geom_text(position = position_jitter(seed = 24),
+  geom_text(position = position_jitter(seed = 26),
             vjust = -1) +
   scale_x_date(limits = c(as.Date("2005-01-01"),
                           as.Date("2025-01-01")),
@@ -28,6 +28,6 @@ ggplot(data = chart_src, aes(x = last_updated,
                                   color = "grey30"))
 
 ggsave("./ggploty/ggplot.png", 
-       width = 15,
-       height = 7.5,
-       dpi = 100)
+       width = 10,
+       height = 5,
+       dpi = 300)
